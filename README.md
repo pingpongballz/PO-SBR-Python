@@ -14,6 +14,7 @@ Grab the modified rtxpy and follow instructions here: https://github.com/pingpon
 Original: https://github.com/makepath/rtxpy  
 
 # Results
+Simulation on RTX4070 SUPER, i7-14700k
 Flat plate at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)  
 Flat plate dimensions: 1.5m *1.5m.  
 Angular step: 45 to 135 degrees, 0.1 degree step  
@@ -25,7 +26,7 @@ Theoretical boresight maximum: 38.0dB. Simulated: 38.0dB
   
 Dihedral at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)  
 Dihedral dimensions: 1.5m *1.5m plates at 90 degree angles to each other.  
-Angular step: 45 to 135 degrees degrees, 0.1 degree step 
+Angular step: 45 to 135 degrees degrees, 0.1 degree step  
 Operating frequency: 3GHz  
 Time to complete: 31.2 seconds  
 Theoretical boresight maximum: 41.0dB. Simulated: 41.1dB  
