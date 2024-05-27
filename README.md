@@ -6,6 +6,13 @@ Place POsolver.py into the working folder, and use the functions.
 I am too lazy to make a module sooo yeah :/  
 Examples are given in Test_RCS for RCS, and Test_range for radar range profile.  
 
+# Dependencies
+numpy: https://numpy.org/  
+libigl: https://libigl.github.io/libigl-python-bindings/  
+rtxpy (MODIFIED VERSION):   
+Grab the modified rtxpy and follow instructions here: https://github.com/pingpongballz/rtxpy  
+Original: https://github.com/makepath/rtxpy  
+
 # Results
 Flat plate at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)  
 Flat plate dimensions: 1.5m *1.5m.  
@@ -33,4 +40,7 @@ Time to complete: 32.8 seconds
 Theoretical boresight maximum: 33.3dB. Simulated: 33.2dB  
 ![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/9b51a234-1a67-4b93-bd4c-811c856ab430)
 
+# References
+[1] R. Bhalla and H. Ling, "Image domain ray tube integration formula for the shooting and bouncing ray technique," in Radio Science, vol. 30, no. 5, pp. 1435-1446, Sept.-Oct. 1995.  
+[2] S. W. Lee, H. Ling and R. Chou, "Ray-tube integration in shooting and bouncing ray method", Microwave and Optical Technology Letters, vol. 1, no. 8, pp. 286-289, October 1988.  
 
