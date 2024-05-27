@@ -197,8 +197,7 @@ def simulate(alpha, phi, theta, freq, raysperlam, v, f):
     dir_theta = np.array([cosd(theta)*cosd(phi), cosd(theta)*sind(phi), -sind(theta)])
     dir_r = np.array([sind(theta)*cosd(phi)  , sind(theta)*sind(phi), cosd(theta)])
 
-    
-
+    r0 = np.linalg.norm(ant_centre)
 
     #Perform PO integral
     rays_tbc = ray_dict[ray_dict[:, 0] > 0]
@@ -206,12 +205,12 @@ def simulate(alpha, phi, theta, freq, raysperlam, v, f):
     r_prime = ray_pos_tbc[:,0:3]
     ray_pol = rays_tbc[:,1:4]
     direction = ray_pos_tbc[:,4:7]
-    dist = rays_tbc[:,0:1]
+    dist = rays_tbc[:,0:1]  - r0 #remove initial travel distance
     E_theta_comp, E_phi_comp = PO_Integral(r_prime, dist , ray_pol, direction ,tubediam, lam, dir_phi, dir_theta, dir_r)
     
     E_theta_sum = np.sum(E_theta_comp)
     E_phi_sum = np.sum(E_phi_comp)
-    r0 = np.linalg.norm(ant_centre)
+    
     
         
     return E_theta_sum, E_phi_sum, r0
