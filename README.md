@@ -14,7 +14,7 @@ Grab the modified rtxpy and follow instructions here: https://github.com/pingpon
 Original: https://github.com/makepath/rtxpy  
 
 # Results
-Simulation on RTX4070 SUPER, i7-14700k
+Simulation on RTX4070 SUPER, i7-14700k  
 Flat plate at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)  
 Flat plate dimensions: 1.5m *1.5m.  
 Angular step: 45 to 135 degrees, 0.1 degree step  
