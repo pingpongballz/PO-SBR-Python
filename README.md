@@ -4,6 +4,7 @@ A python implementation of shooting and bouncing rays (PO-SBR), accelerated usin
 # How to use
 Place POsolver.py into the working folder, and use the functions.  
 I am too lazy to make a module sooo yeah :/  
+Examples are given in Test_RCS for RCS, and Test_range for radar range profile.  
 
 # Results
 Flat plate at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)  
