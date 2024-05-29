@@ -3,7 +3,7 @@ A python implementation of shooting and bouncing rays (PO-SBR), accelerated usin
 
 # How to use
 Place POsolver.py into the working folder, and use the functions.  
-I am too lazy to make a module sooo yeah :/  
+I have no idea how to package it into a python module :skull:  
 Examples are given in Test_RCS for RCS, and Test_range for radar range profile.  
 
 # Dependencies
