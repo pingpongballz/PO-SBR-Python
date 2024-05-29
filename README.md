@@ -21,7 +21,8 @@ Angular step: 45 to 135 degrees, 0.1 degree step
 Operating frequency: 3GHz  
 Time to complete: 22.0 seconds  
 Theoretical boresight maximum: 38.0dB. Simulated: 38.0dB  
-![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/e2ad1b65-5907-4515-a8dd-c4683defaf0a)
+![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/8a49788c-7ac9-4485-8ae6-1fb469643d7c)
+
 
   
 Dihedral at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)  
@@ -30,7 +31,8 @@ Angular step: 45 to 135 degrees degrees, 0.1 degree step
 Operating frequency: 3GHz  
 Time to complete: 31.2 seconds  
 Theoretical boresight maximum: 41.0dB. Simulated: 41.1dB  
-![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/cb28e0f3-d2a4-4dfa-8e7c-87b0f77b8058)
+![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/70424d6e-5c71-42d8-8389-ee52f6deb619)
+
 
     
 Trihedral at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)  
@@ -39,7 +41,8 @@ Angular step: 45 to 135 degrees degrees, 0.1 degree step
 Operating frequency: 3GHz  
 Time to complete: 32.8 seconds  
 Theoretical boresight maximum: 33.3dB. Simulated: 33.2dB  
-![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/9b51a234-1a67-4b93-bd4c-811c856ab430)
+![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/57f95e3a-95b6-4a2a-805a-888e21fdf004)
+
 
 # References
 [1] R. Bhalla and H. Ling, "Image domain ray tube integration formula for the shooting and bouncing ray technique," in Radio Science, vol. 30, no. 5, pp. 1435-1446, Sept.-Oct. 1995.  
