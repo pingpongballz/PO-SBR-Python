@@ -154,7 +154,7 @@ def simulate(alpha, phi, theta, freq, raysperlam, v, f):
     right_step = tubediam * right
 
     pool_begin = pool_min + ( up_step + right_step ) / 2.0
-
+    '''This is a naive implementation. A much faster, but barely tested way of doing it is below'''
     ray_pos = []
 
 
@@ -162,7 +162,19 @@ def simulate(alpha, phi, theta, freq, raysperlam, v, f):
         for j in range(numrays):
             temp = pool_begin + up_step*i + right_step*j
             ray_pos.append([temp[0], temp[1], temp[2], 0, ray_dir[0], ray_dir[1], ray_dir[2], 10000])
-
+    '''Faster way using numpy arrays'''
+    '''
+    xx, yy = np.meshgrid(np.linspace(0, numrays-1, numrays), np.linspace(0, numrays-1, numrays))
+    zz0 = (pool_begin[0] + up_step[0]*xx + right_step[0]*yy).reshape(-1)
+    zz1 = (pool_begin[1] + up_step[1]*xx + right_step[1]*yy).reshape(-1)
+    zz2 = (pool_begin[2] + up_step[2]*xx + right_step[2]*yy).reshape(-1)
+    ray_pos = np.tile([0,0,0,0,ray_dir[0], ray_dir[1], ray_dir[2], 10000],(numrays*numrays,1))
+    
+    ray_pos[:,0] = zz0
+    ray_pos[:,1] = zz1
+    ray_pos[:,2] = zz2
+    '''
+    
     ray_pos = np.array(ray_pos)
     rays = np.float32(ray_pos)
     rays = rays.flatten()
@@ -187,7 +199,6 @@ def simulate(alpha, phi, theta, freq, raysperlam, v, f):
 
     
 
-    hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
     hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
     hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
     hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
