@@ -13,7 +13,7 @@ raysperlam = 3
         
 
 v,f = PO.build(filename)
-RCS = lambda E_theta,E_phi: 10*np.log10(4*np.pi*np.abs(E_theta)**2)
+RCS = lambda E_theta,E_phi: 10*np.log10(4*np.pi*(abs(E_theta))**2 + 4*np.pi*(abs(E_phi))**2)
 arr = []
 
   
