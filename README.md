@@ -25,6 +25,8 @@ libigl: https://libigl.github.io/libigl-python-bindings/
 rtxpy (MODIFIED VERSION):   
 Grab the modified rtxpy and follow instructions here: https://github.com/pingpongballz/rtxpy  
 Original: https://github.com/makepath/rtxpy  
+DO NOT USE THE ORIGINAL rtxpy. The original does NOT take into account of inward or outward mesh normals.  
+
 
 # Results
 Simulation on RTX4070 SUPER, i7-14700k  
