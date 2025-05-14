@@ -7,13 +7,20 @@ Examples are given in Test_RCS for RCS, and Test_range for radar range profile.
 
 # Functions that you really need to care about
 1. ```build(filename)``` takes in the filename of the geometry. Supported file formats inherit from libigl: ```obj, off, stl, wrl, ply, mesh```. Returns vertices and faces ```v,f```  
-2. ```simulate(alpha, phi, theta, freq, raysperlam, v, f)```. This simulates monostatic radar. (receive = transmit angle)  
-   ```alpha``` is the angle the E vector makes with the theta vector. 0/180 degrees is V pol, 90/270 degrees is H pol.  
-   ```phi``` is the phi angle of observation/transmission.  
-   ```theta``` is the theta angle of observation/transmission.  
-   ```freq``` is the simulation frequency in Hz  
-   ```raysperlam``` is the number of rays per lambda. 3 would give 9 rays in an area of lambda^2, 4 would give 16, etc.  
-   ```v,f``` are the vertices and faces obtained through ```build(filename)```. Pass ```v,f``` from ```build``` to these parameters in ```simulate```
+2. ```simulate(alpha, phi, theta, freq, raysperlam, v, f)```. This simulates monostatic radar. (receive = transmit angle)
+   
+   ```alpha``` is the angle the E vector makes with the theta vector. 0/180 degrees is V pol, 90/270 degrees is H pol.
+   
+   ```phi``` is the phi angle of observation/transmission.
+   
+   ```theta``` is the theta angle of observation/transmission.
+   
+   ```freq``` is the simulation frequency in Hz
+   
+   ```raysperlam``` is the number of rays per lambda. 3 would give 9 rays in an area of lambda^2, 4 would give 16, etc.
+   
+   ```v,f``` are the vertices and faces obtained through ```build(filename)```. Pass ```v,f``` from ```build``` to these parameters in ```simulate```.
+   
    ```bounces``` are the desired number of max bounces you would like the progam to acheive
      
 Examples are provided in TestRCS.py, and TestRange.py.
