@@ -14,6 +14,7 @@ Examples are given in Test_RCS for RCS, and Test_range for radar range profile.
    ```freq``` is the simulation frequency in Hz  
    ```raysperlam``` is the number of rays per lambda. 3 would give 9 rays in an area of lambda^2, 4 would give 16, etc.  
    ```v,f``` are the vertices and faces obtained through ```build(filename)```. Pass ```v,f``` from ```build``` to these parameters in ```simulate```
+   ```bounces``` are the desired number of max bounces you would like the progam to acheive
      
 Examples are provided in TestRCS.py, and TestRange.py.
   
