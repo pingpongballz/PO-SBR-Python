@@ -4,12 +4,13 @@ import matplotlib.pyplot as plt
 import time
 
 #Initial Params
-filename = "geometries/plate.obj"
+filename = "geometries/trihedral.obj"
 alpha = 180 #0/180 for V pol; 90/270 for H pol
 phi = np.arange(45,135,0.1) #90
 theta = 90
 freq = 3e9 #np.arange(1e9,4e9,30e6)
 raysperlam = 3
+bounces = 3
         
 
 v,f = PO.build(filename)
@@ -21,7 +22,7 @@ arr = []
 
 tic = time.time()
 for ang in phi:
-    E1, E2,r0 = PO.simulate(alpha, ang, theta, freq, raysperlam, v, f)
+    E1, E2,r0 = PO.simulate(alpha, ang, theta, freq, raysperlam, v, f, bounces)
     arr.append(RCS(E1,E2))
 toc = time.time()
 print(str(toc-tic) + " seconds")

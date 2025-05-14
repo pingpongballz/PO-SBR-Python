@@ -118,7 +118,7 @@ def PO_Integral(ray_pos, r, pol, direction, tubediam, lam, dir_phi, dir_theta, d
 
     return E_theta, E_phi    
 
-def simulate(alpha, phi, theta, freq, raysperlam, v, f):
+def simulate(alpha, phi, theta, freq, raysperlam, v, f, bounces):
 
     lam = (3e8)/(freq)
     k = 2*np.pi/lam
@@ -200,11 +200,9 @@ def simulate(alpha, phi, theta, freq, raysperlam, v, f):
 
 
     
+    for b in range(bounces):
+        hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
 
-    hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
-    hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
-    hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
-    hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
 
     dir_phi = np.array([-sind(phi)  , cosd(phi), 0])
     dir_theta = np.array([cosd(theta)*cosd(phi), cosd(theta)*sind(phi), -sind(theta)])

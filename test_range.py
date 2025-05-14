@@ -15,6 +15,7 @@ phi = 90
 theta = 90
 freq = np.arange(1,2,0.01)*1e9
 raysperlam = 3
+bounces = 2
         
 
 v,f = PO.build(filename)
@@ -26,7 +27,7 @@ tic = time.time()
 for i in freq:
     lam = (3e8)/(i)
     k = 2*np.pi/lam
-    E1, E2,r0 = PO.simulate(alpha, phi, theta, i, raysperlam, v, f)
+    E1, E2,r0 = PO.simulate(alpha, phi, theta, i, raysperlam, v, f, bounces)
     factor = ((4*np.pi)/(-1j*k)) #normalisation. See R. Bhalla ISAR ray tube method 
     arr.append(E1)
      
