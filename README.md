@@ -43,7 +43,7 @@ Flat plate at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)
 Flat plate dimensions: 1.5m *1.5m.  
 Angular step: 45 to 135 degrees, 0.1 degree step  
 Operating frequency: 3GHz  
-Time to complete: 5.02 seconds  
+Time to complete: 4.14 seconds  
 Theoretical boresight maximum: 38.0dB. Simulated: 38.0dB  
 ![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/8a49788c-7ac9-4485-8ae6-1fb469643d7c)
 
@@ -53,7 +53,7 @@ Dihedral at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)
 Dihedral dimensions: 1.5m *1.5m plates at 90 degree angles to each other.  
 Angular step: 45 to 135 degrees degrees, 0.1 degree step  
 Operating frequency: 3GHz  
-Time to complete: 11.3 seconds  
+Time to complete: 7.91 seconds  
 Theoretical boresight maximum: 41.0dB. Simulated: 41.1dB  
 ![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/70424d6e-5c71-42d8-8389-ee52f6deb619)
 
@@ -63,7 +63,7 @@ Trihedral at boreside. x-axis: degree(angle). y-axis: RCS(dBm^2)
 Trihedral dimensions: 1.5m interior length.  
 Angular step: 45 to 135 degrees degrees, 0.1 degree step  
 Operating frequency: 3GHz  
-Time to complete: 14.6 seconds  
+Time to complete: 8.55 seconds  
 Theoretical boresight maximum: 33.3dB. Simulated: 33.2dB  
 ![image](https://github.com/pingpongballz/PO-SBR-Python/assets/74599812/57f95e3a-95b6-4a2a-805a-888e21fdf004)
 
