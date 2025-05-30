@@ -28,7 +28,6 @@ for i in freq:
     lam = (3e8)/(i)
     k = 2*np.pi/lam
     E1, E2,r0 = PO.simulate(alpha, phi, theta, i, raysperlam, v, f, bounces)
-    factor = ((4*np.pi)/(-1j*k)) #normalisation. See R. Bhalla ISAR ray tube method 
     arr.append(E1)
      
 

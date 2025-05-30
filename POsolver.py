@@ -84,21 +84,21 @@ def shoot_and_record(hits_1, ray_pos, ray_dict, numrays):
 
 
     if numrays_1 > 0:
-        hits = [[0,0,0,0] for i in range(numrays*numrays)]
+        hits = [[0,0,0,0] for i in range(numrays)]
         hits = np.float32(hits)
         hits = hits.flatten()
 
         rays = np.float32(ray_pos)
         rays = rays.flatten()
 
-        res = optix.trace(rays,  hits, numrays*numrays)#PASS 2 GPU
+        res = optix.trace(rays,  hits, numrays)#PASS 2 GPU
         assert res == 0
         
-        hits_1 = hits.reshape(numrays*numrays,4)
+        hits_1 = hits.reshape(numrays,4)
     
     return hits_1, ray_pos, ray_dict
 
-def PO_Integral(ray_pos, r, pol, direction, tubediam, lam, dir_phi, dir_theta, dir_r):
+def PO_Integral(ray_pos, r, pol, direction, tubediam, lam, dir_phi, dir_theta, dir_r, r0):
     
     k = 2*np.pi/lam
     rayArea = tubediam*tubediam
@@ -111,7 +111,7 @@ def PO_Integral(ray_pos, r, pol, direction, tubediam, lam, dir_phi, dir_theta, d
     B_theta = ((np.cross(-dir_phi, E_ap) + np.cross(dir_theta, H_ap))*direction).sum(1)
     B_phi = ((np.cross(dir_theta, E_ap) + np.cross(dir_phi, H_ap))*direction).sum(1)
 
-    factor = 1j*(k/(4*np.pi)) * rayArea * np.exp(1j*(r_vec*ray_pos).sum(1))
+    factor = (1j*k)/(4*np.pi*r0) * rayArea * np.exp(1j*(r_vec*ray_pos).sum(1))
 
     E_theta = factor*B_theta
     E_phi = factor*B_phi
@@ -154,18 +154,7 @@ def simulate(alpha, phi, theta, freq, raysperlam, v, f, bounces):
     right_step = tubediam * right
 
     pool_begin = pool_min + ( up_step + right_step ) / 2.0
-    '''This is a naive implementation. A much faster way below.'''
-    '''
-    ray_pos = []
 
-
-    for i in range(numrays):
-        for j in range(numrays):
-            temp = pool_begin + up_step*i + right_step*j
-            ray_pos.append([temp[0], temp[1], temp[2], 0, ray_dir[0], ray_dir[1], ray_dir[2], 10000])
-    '''
-    
-    '''Faster way using numpy arrays'''
     xx, yy = np.meshgrid(np.linspace(0, numrays-1, numrays), np.linspace(0, numrays-1, numrays))
     zz0 = (pool_begin[0] + up_step[0]*xx + right_step[0]*yy).reshape(-1)
     zz1 = (pool_begin[1] + up_step[1]*xx + right_step[1]*yy).reshape(-1)
@@ -191,17 +180,22 @@ def simulate(alpha, phi, theta, freq, raysperlam, v, f, bounces):
     hits = np.float32(hits)
     hits = hits.flatten()
 
+    hits = hits.reshape(numrays*numrays, 4)
 
     #perform ray trace
     res = optix.trace(rays,  hits, numrays*numrays)#PASS 2 GPU
     assert res == 0
+    
+    
 
-    hits_1 = hits.reshape(numrays*numrays,4)
-
-
+    numrays = np.count_nonzero(hits[:, 0]>0) #remove initial rays that did not hit geometry
+    
+    ray_pos = ray_pos[hits[:, 0] > 0, :] #update corresponding arrays/dicts
+    ray_dict = ray_dict[hits[:, 0] > 0, :]
+    hits = hits[hits[:, 0] > 0, :]
     
     for b in range(bounces):
-        hits_1, ray_pos, ray_dict = shoot_and_record(hits_1, ray_pos, ray_dict, numrays)
+        hits, ray_pos, ray_dict = shoot_and_record(hits, ray_pos, ray_dict, numrays)
 
 
     dir_phi = np.array([-sind(phi)  , cosd(phi), 0])
@@ -217,7 +211,7 @@ def simulate(alpha, phi, theta, freq, raysperlam, v, f, bounces):
     ray_pol = rays_tbc[:,1:4]
     direction = ray_pos_tbc[:,4:7]
     dist = rays_tbc[:,0:1]  - r0 #remove initial travel distance
-    E_theta_comp, E_phi_comp = PO_Integral(r_prime, dist , ray_pol, direction ,tubediam, lam, dir_phi, dir_theta, dir_r)
+    E_theta_comp, E_phi_comp = PO_Integral(r_prime, dist , ray_pol, direction ,tubediam, lam, dir_phi, dir_theta, dir_r, r0)
     
     E_theta_sum = np.sum(E_theta_comp)
     E_phi_sum = np.sum(E_phi_comp)
